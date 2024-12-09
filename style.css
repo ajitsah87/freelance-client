@@ -1,0 +1,196 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'custom-font';
+    src: url('./value-sans-medium-pro.otf');
+}
+@font-face {
+    font-family: 'button-font';
+    src: url('./Tripel\ Karmeliet\ Font.otf');
+}
+
+body {
+    font-family: 'custom-font';
+}
+
+.main-container-wrapper {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    background-color: #f4f1ec;
+    position: relative;
+    isolation: isolate;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+
+        background-image: url('./assets/TKGCRU2_ASSETS_GRAPHICS.png');
+        background-position: bottom center;
+        background-size: 2500px;
+        background-repeat: no-repeat;
+        z-index: -1;
+        opacity: .05;
+    }
+
+
+    .left-view {
+        background-image: url("./assets/desktopCopy.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+
+    .right-view {
+        /* min-height: 100vh; */
+        padding: 4rem 3rem;
+        
+        .form-wrapper {
+            padding: 5rem;
+            border: 1px solid #b1692e;
+            position: relative;
+
+
+            .icon {
+                position: absolute;
+                top: 0;
+                transform: translate(-50%, -50.5%) rotate(45deg);
+                width: 90px;
+                height: 90px;
+                /* background-color: #f5f3d7; */
+                left: 50%;
+                /* border: 1px solid #dbaa57; */
+                overflow: clip;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    transform: rotate(-45deg) translate(1px, 2px);
+                    scale: 1.8;
+                }
+            }
+
+            > h2 {
+                font-size: 36px;
+                color: #b1692e;
+                margin-bottom: 2rem;
+            }
+
+            > div {
+                margin-bottom: 3.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                input, select {
+                    all: unset;
+                    border: 2px solid #dddddd;
+                    padding: 10px;
+                    flex-grow: 1;
+                    width: 100%;
+
+                    &::placeholder {
+                        color: #000;
+                    }
+                }
+                .select-wrapper {
+                    position: relative;
+                    select {
+                        width: fit-content;
+                        padding-inline: 2rem;
+                    }
+                    &::after {
+                        content: "";
+                        width: 25px;
+                        height: 20px;
+                        display: inline-block;
+                        background-image: url('./assets/down.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        right: 8px;
+                        top: 8px;
+                    }
+
+                }
+                > div {
+                    display: flex;
+                    gap: 1rem;
+                }
+            }
+            > button {
+                all: unset;
+                background-color: #b1692e;
+                color: white;
+                padding: 0.5rem 4rem;
+                display: block;
+                margin-left: auto;
+                font-family: 'button-font';
+                font-size: 28px;
+                
+            }
+        }
+    }
+}
+
+
+@media (max-width: 992px) {
+    .main-container-wrapper {
+        grid-template-columns: 1fr;
+
+        .left-view {
+            display: none;
+        }
+    }
+}
+@media (max-width: 768px) {
+    .main-container-wrapper {
+        .right-view {
+            padding-inline: 2rem;
+            .form-wrapper {
+                padding-inline: 2rem;
+                > h2 {
+                    text-align: center;
+                    font-size: 24px;
+                }
+                > div {
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+
+                    > div {
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                    .select-wrapper select {
+                        width: 100%;
+                        padding-inline: 0.65rem;
+                    }
+                }
+
+                > button {
+                    margin: auto;
+                    margin-top: 4rem;
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/* utils  */
+
+.--flex-col {
+    flex-direction: column !important;
+    align-items: start !important;
+
+}
